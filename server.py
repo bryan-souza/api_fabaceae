@@ -7,6 +7,7 @@ from cerebrum import Identifier
 # 3rd party
 from fastapi import FastAPI, UploadFile, Body
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import HTTPException
 
 
 ROOT_PATH = Path(__file__).resolve().parent
@@ -44,11 +45,19 @@ async def upload_file( file: UploadFile ):
 
 @app.post("/ai")
 async def identify_image( filename: str = Body(..., embed=True) ):
-    try: filepath = Path(CACHE_PATH, filename)
-    except: raise ValueError("File not found")
+    try:
+        filepath = Path(CACHE_PATH, filename)
+    except:
+        raise HTTPException(
+            status_code=400,
+            detail="File not found"
+        )
 
     if not ( filepath.is_file() ):
-        raise TypeError("Not a file")
+        raise HTTPException(
+            status_code=400,
+            detail="Not a file"
+        )
 
     plant_name, accuracy = identifier.identify_plant( filepath )
     return {
