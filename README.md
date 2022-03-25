@@ -27,19 +27,19 @@ Para realizar o deploy localmente, você deverá ter instalado em sua máquina a
 1. Baixe/clone esse repositório em sua máquina
 
 ```
-git clone https://github.com/bryan-souza/api_fabaceae.git
+$ git clone https://github.com/bryan-souza/api_fabaceae.git
 ```
 
 2. Instale as bibliotecas python necessárias usando PIP
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 3. Inicialize o servidor
 
 ```
-uvicorn server:app
+$ uvicorn server:app
 ```
 
 > NOTA: Utilizamos o servidor web [uvicorn](https://uvicorn.org). Todas as customizações e flags encontradas na documentação do uvicorn podem ser aplicadas ao inicializar o servidor.
@@ -57,12 +57,12 @@ Será inserido aqui quando forem realizados os devidos testes :p
 1. Construa a imagem
 
 ```
-sudo buildah build --format=docker -f Dockerfile -t api_fabaceae
+# buildah build --format=docker -f Dockerfile -t api_fabaceae
 ```
 
 2. Execute o contâiner
 
 ```
-sudo podman run -dt --name api_fabaceae -p 80:80 localhost/api_fabaceae
+# podman run -dt --name api_fabaceae -p 80:80 localhost/api_fabaceae
 ```
 
