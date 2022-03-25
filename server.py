@@ -5,7 +5,7 @@ from pathlib import Path
 from cerebrum import Identifier
 
 # 3rd party
-from fastapi import FastAPI, UploadFile, Body
+from fastapi import FastAPI, UploadFile, File, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import HTTPException
 
@@ -32,8 +32,8 @@ app.add_middleware(
 
 # Routes
 
-@app.post("/files/")
-async def upload_file( file: UploadFile ):
+@app.post("/files")
+async def upload_file( file: UploadFile = File(...) ):
     filepath = Path( CACHE_PATH, file.filename )
     content = await file.read()
 
