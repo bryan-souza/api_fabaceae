@@ -1,6 +1,3 @@
-[submodule "cerebrum"]
-	path = cerebrum
-	url = ./cerebrum
 [submodule "app/cerebrum"]
 	path = app/cerebrum
 	url = https://github.com/bryan-souza/cerebrum.git
