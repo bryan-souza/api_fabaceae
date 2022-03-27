@@ -5,6 +5,7 @@ from typing import Any
 
 # Internals
 from app.exceptions import AcessViolationError
+from app.cerebrum import Identifier
 
 
 class PathRouterMeta(type):
@@ -61,3 +62,8 @@ class PathRouter(object, metaclass=PathRouterMeta):
             return config
         
         return {}
+
+
+def get_identifier():
+    instance = Identifier()
+    return instance
