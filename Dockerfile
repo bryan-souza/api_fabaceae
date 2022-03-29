@@ -3,7 +3,7 @@ FROM ubuntu:latest
 # Install dependencies
 RUN apt update
 RUN apt install -y git python3 python3-pip
-RUN git clone https://github.com/bryan-souza/api_fabaceae.git
+RUN git clone --recursive https://github.com/bryan-souza/api_fabaceae.git
 
 # CD into cloned directory
 WORKDIR /api_fabaceae
@@ -14,6 +14,7 @@ VOLUME /api_fabaceae/cache
 
 # Install python dependencies
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r cerebrum/requirements.txt
 
 # Expose HTTP port
 EXPOSE 80

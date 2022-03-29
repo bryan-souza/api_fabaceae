@@ -27,7 +27,7 @@ Para realizar o deploy localmente, você deverá ter instalado em sua máquina a
 1. Baixe/clone esse repositório em sua máquina
 
 ```
-$ git clone https://github.com/bryan-souza/api_fabaceae.git
+$ git clone --recursive https://github.com/bryan-souza/api_fabaceae.git
 ```
 
 2. Instale as bibliotecas python necessárias usando PIP
@@ -36,7 +36,13 @@ $ git clone https://github.com/bryan-souza/api_fabaceae.git
 $ pip install -r requirements.txt
 ```
 
-3. Inicialize o servidor
+3. Instale as dependências do módulo `cerebrum`
+
+```
+$ pip install -r cerebrum/requirements.txt
+```
+
+4. Inicialize o servidor
 
 ```
 $ uvicorn server:app
