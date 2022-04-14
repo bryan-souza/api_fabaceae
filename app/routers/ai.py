@@ -23,21 +23,16 @@ router = APIRouter(
 async def identify_image(
     filename: str = Body(..., embed=True)
 ):
-    try:
-        filepath = Path(
-            path_router['CACHE_PATH'], 
-            filename
-        )
-    except:
-        raise HTTPException(
-            status_code=400,
-            detail="File not found"
-        )
+    
+    filepath = Path(
+        path_router['CACHE_PATH'], 
+        filename
+    )
 
-    if not ( filepath.is_file() ):
+    if not filepath.exists():
         raise HTTPException(
-            status_code=400,
-            detail="Not a file"
+            status_code=404,
+            detail="File not found"
         )
 
     plant_name, accuracy = identifier.identify_plant( filepath )
