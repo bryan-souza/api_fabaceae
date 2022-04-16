@@ -1,0 +1,15 @@
+[flake8]
+exclude = 
+    .git,
+    .github,
+    .pytest_cache,
+    .vscode,
+    env,
+    __pycache__,
+    app/cerebrum,
+
+per-file-ignores = 
+    # Imported but not used
+    __init__.py: F401
+
+max-complexity = 10
