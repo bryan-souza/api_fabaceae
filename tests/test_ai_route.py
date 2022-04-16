@@ -16,11 +16,13 @@ client = TestClient(app)
 @pytest.fixture
 def filename():
     _filename = 'Caule10LL.jpg'
-    image = Path(TEST_PHOTOS_PATH, _filename)
-    client.post(
-        '/files',
-        files={ 'file': open(image, 'rb') }
-    )
+    image_path = Path(TEST_PHOTOS_PATH, _filename)
+
+    with open(image_path, 'rb') as image:
+        client.post(
+            '/files',
+            files={ 'file': image }
+        )
 
     return _filename
 
