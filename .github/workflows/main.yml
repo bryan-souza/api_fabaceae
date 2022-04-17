@@ -31,7 +31,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install wheel flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        if [ -f app/cerebrum/requirements.txt ]; then pip install -r app/cerebrum/requirements.txt; fi
 
     - name: Lint with flake8
       run: |
