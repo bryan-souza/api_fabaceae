@@ -5,6 +5,7 @@ from pathlib import Path
 
 # Internals
 from app.exceptions import AcessViolationError
+from app.db.database import SessionLocal
 
 class PathRouter(object):
     _instances = {}
@@ -66,3 +67,10 @@ class PathRouter(object):
             if not ( path.exists() ):
                 absolute_path = path.resolve()
                 os.mkdir(absolute_path)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
