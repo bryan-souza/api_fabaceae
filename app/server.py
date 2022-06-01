@@ -1,11 +1,12 @@
 # Internals
 from app.routers import files, ai
+from app.db.migrations import make_migrations
 
 # 3rd party
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-
+make_migrations()
 app = FastAPI()
 
 
